@@ -10,7 +10,7 @@ Have you ever wanted your aliases, PS1 setup and environment configurations acro
 
 SAMESHELL achieves this without actually changing anything, it's all temporary in your session by using process substitution. Granted, it's not a complete "environment" copy, as there may be programs missing on a remote server.
 
-However, by adding package manager install commands in your personal configuration, I guess you.. technically could do that. In such cases though, I would recommend first checking if they're installed, to avoid unnecessary load times when the package manager fetches repository metadata before looking up said programs.
+Well I guess.. technically you could do that, by adding package manager install commands in your personal configuration. In such cases though, I would recommend first checking if they're installed, to avoid unnecessary load times when the package manager fetches repository metadata before looking up said programs.
 
 ## How it works
 It works by sending a command to start the shell with a specific configuration "file", but the *file* is generated with process substitution instead i.e. `<()`. Because of this, SAMESHELL is able to essentially build a shell configuration consisting of the original remote/login configuration (skippable) together with your personal configuration.
