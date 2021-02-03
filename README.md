@@ -31,7 +31,7 @@ If your configuration is large enough to make your shell open slowly (that would
 Consider changing the command names for any of the reasons below. I personally have `zh`, `zo` and `zu` respectively.
 
 #### `ssh`
-* Now requires ; at the end of any direct command you wish to run
+* Now requires `;` at the end of any direct command you wish to run
 * Stays logged after your command
 
 #### `sudo`
