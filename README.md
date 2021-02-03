@@ -6,14 +6,14 @@ This isn't exactly a program, but rather an idea with example shell configuratio
 I imagine it could be rewritten quite nicely too, e.g. to detect remote shells available.
 
 ## Why?
-Have you ever wanted your aliases, PS1 setup and environment configurations across all ssh/su sessions?  Well, look no further. Of course, you could- if it's not too much of a bother for you, manually configure your personal configuration on all the servers/logins you access. However, if you share the same logins with others, that might not be what the *others* want.
+Have you ever wanted your aliases, PS1 setup and environment configurations across all ssh/su sessions?  Well, look no further. Of course, you could- if it's not too much of a bother for you, manually configure your personal configuration on all the servers/logins you access. Although, if you share the same logins with others, that might not be what the *others* want.
 
 SAMESHELL achieves this without actually changing anything, it's all temporary in your session by using process substitution. Granted, it's not a complete "environment" copy, as there may be programs missing on a remote server.
 
-However, by adding package manager install commands in your personal configuration, I guess you.. technically could do that. In such cases though, I would recommend first checking if they're installed, to avoid unnecessary load times when the package manager fetches repository metadata before looking up said programs.
+Well I guess.. technically you could do that, by adding package manager install commands in your personal configuration. In such cases though, I would recommend first checking if they're installed, to avoid unnecessary load times when the package manager fetches repository metadata before looking up said programs.
 
 ## How it works
-It works by sending a command to start the shell with a specific configuration "file", but the *file* is generated with process substitution instead i.e. `<()`. Because of this, SAMESHELL is able to essentially build a shell configuration consisting of the original remote/login configuration together with your personal configuration.
+It works by sending a command to start the shell with a specific configuration "file", but the *file* is generated with process substitution instead i.e. `<()`. Because of this, SAMESHELL is able to essentially build a shell configuration consisting of the original remote/login configuration (skippable) together with your personal configuration.
 
 ### Chained sessions
 As an extra, within said built shell configuration, it sets a temporary environment variable containing your personal configuration. This adds support for chained ssh/su sessions, meaning you can retain your personal configuration while doing ssh, then su, then ssh ... To infinity and beyond!
