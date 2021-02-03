@@ -28,14 +28,14 @@ If your configuration is large enough to make your shell open slowly (that would
 ## Gotchas
 
 ### Command names
-Consider changing the command names for any of the following reasons:
+Consider changing the command names for any of the reasons below. I personally have `zh`, `zo` and `zu` respectively.
 
 #### `ssh`
 * Now requires ; at the end of any direct command you wish to run
 * Stays logged after your command
 
-#### `su`
-* Inability to run a direct command, because `su` can only take one `-c/--session-command` at once
-
 #### `sudo`
 * Now requires `su` i.e. `sudo su myuser`
+
+#### `su`
+* Inability to run a direct command, because `su` can only take one `-c/--session-command` at once
