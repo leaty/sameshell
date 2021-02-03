@@ -1,0 +1,26 @@
+#
+# ~/.config/sameshell/bashrc
+#
+# This is a sample SAMESHELL config for bash which adds:
+#	- Personal PS1
+#	- Personal TERM export
+#	- Personal EDITOR export
+#	- Support for SAMESHELL on chained ssh/sudo su/su sessions
+
+# Your (probably?) pretty PS1
+PS1='\[\033[1;36m\]\u\[\033[1;31m\]@\[\033[1;32m\]\h:\[\033[1;35m\]\w\[\033[1;31m\]\$\[\033[0m\] '
+
+# Your terminal
+export TERM=xterm-256color
+
+# Your editor
+export EDITOR=vim
+
+# SAMESHELL for chained sessions
+SAMESHELL_REAL="~/.bashrc"
+SAMESHELL_CMD="bash --rcfile <(cat $SAMESHELL_REAL; echo \"SAMESHELL='$SAMESHELL'\"; echo '. <(echo \"\$SAMESHELL\" | base64 --decode)')"
+ssh() { /usr/bin/ssh -t $@ "$SAMESHELL_CMD"; }
+sudo() { /usr/bin/sudo $@ --session-command "$SAMESHELL_CMD"; }
+su() { /usr/bin/su $@ --session-command "$SAMESHELL_CMD"; }
+
+# vim: syntax=sh

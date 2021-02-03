@@ -1,0 +1,17 @@
+# SAMESHELL for bash
+#	- Looks for ~/.config/sameshell/bashrc by default
+#	- Removes lines beginning with #
+#	- Sends shell config as base64
+# 
+# You may either:
+#	- source this file in .bashrc
+#	- add the contents to your .bashrc
+
+SAMESHELL=$(cat ~/.config/sameshell/bashrc | sed '/^#/d' | base64)
+SAMESHELL_REAL="~/.bashrc"
+SAMESHELL_CMD="bash --rcfile <(cat $SAMESHELL_REAL; echo \"SAMESHELL='$SAMESHELL'\"; echo '. <(echo \"\$SAMESHELL\" | base64 --decode)')"
+ssh() { /usr/bin/ssh -t $@ "$SAMESHELL_CMD"; }
+sudo() { /usr/bin/sudo $@ --session-command "$SAMESHELL_CMD"; }
+su() { /usr/bin/su $@ --session-command "$SAMESHELL_CMD"; }
+
+# vim: syntax=sh
