@@ -6,7 +6,7 @@ This isn't exactly a program, but rather an idea with example shell configuratio
 I imagine it could be rewritten quite nicely too, e.g. to detect remote shells available.
 
 ## Why?
-Have you ever wanted your aliases, PS1 setup and environment configurations across all ssh/su sessions?  Well, look no further. Of course, you could- if it's not too much of a bother for you, manually configure your personal configuration on all the servers/logins you access. However, if you share the same logins with others, that might not be what the *others* want.
+Have you ever wanted your aliases, PS1 setup and environment configurations across all ssh/su sessions?  Well, look no further. Of course, you could- if it's not too much of a bother for you, manually configure your personal configuration on all the servers/logins you access. Although, if you share the same logins with others, that might not be what the *others* want.
 
 SAMESHELL achieves this without actually changing anything, it's all temporary in your session by using process substitution. Granted, it's not a complete "environment" copy, as there may be programs missing on a remote server.
 
