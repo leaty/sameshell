@@ -13,7 +13,7 @@ SAMESHELL achieves this without actually changing anything, it's all temporary i
 However, by adding package manager install commands in your personal configuration, I guess you.. technically could do that. In such cases though, I would recommend first checking if they're installed, to avoid unnecessary load times when the package manager fetches repository metadata before looking up said programs.
 
 ## How it works
-It works by sending a command to start the shell with a specific configuration "file", but the *file* is generated with process substitution instead i.e. `<()`. Because of this, SAMESHELL is able to essentially build a shell configuration consisting of the original remote/login configuration together with your personal configuration.
+It works by sending a command to start the shell with a specific configuration "file", but the *file* is generated with process substitution instead i.e. `<()`. Because of this, SAMESHELL is able to essentially build a shell configuration consisting of the original remote/login configuration (skippable) together with your personal configuration.
 
 ### Chained sessions
 As an extra, within said built shell configuration, it sets a temporary environment variable containing your personal configuration. This adds support for chained ssh/su sessions, meaning you can retain your personal configuration while doing ssh, then su, then ssh ... To infinity and beyond!
